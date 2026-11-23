@@ -1,4 +1,4 @@
-FROM FROM python:3.12-alpine
+FROM python:3.12-alpine
 
 LABEL org.opencontainers.image.title="CloudAdhar Containers Demo" \
       org.opencontainers.image.description="Sample container for Amazon ECR, ECS, EKS and AWS Fargate training"
