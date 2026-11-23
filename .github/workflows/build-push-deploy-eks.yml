@@ -125,7 +125,7 @@ jobs:
 
     if: >-
       ${{
-        (github.event_name == 'push' && github.ref_name == 'test') ||
+        (github.event_name == 'push' && github.ref_name == 'main') ||
         (github.event_name == 'workflow_dispatch' &&
          inputs.deploy_to_ecs == true)
       }}
@@ -224,7 +224,7 @@ jobs:
     if: >-
       ${{
         github.event_name == 'workflow_dispatch' &&
-        inputs.deploy_to_eks == true
+        inputs.deploy_to_eks == false
       }}
 
     runs-on: ubuntu-latest
