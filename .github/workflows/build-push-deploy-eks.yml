@@ -104,6 +104,19 @@ jobs:
           aws ecs list-clusters \
             --region "${AWS_REGION}" \
             --output json
+      - name: Search ECS task definitions
+        run: |
+          aws ecs list-task-definitions \
+            --region "${AWS_REGION}" \
+            --output json
+
+      - name: Search ECS container names in task definition
+        run: |
+          aws ecs describe-task-definition \
+            --region "${AWS_REGION}" \
+            --task-definition "${ECS_TASK_DEFINITION}" \
+            --query 'taskDefinition.containerDefinitions[].{name:name,image:image}' \
+            --output table
 
       - name: Build and push image
         id: build
