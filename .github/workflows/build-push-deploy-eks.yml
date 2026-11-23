@@ -124,6 +124,12 @@ jobs:
             --query 'taskDefinition.containerDefinitions[].{name:name,image:image}' \
             --output table
 
+      - name: Eks Cluster List
+        run: |
+          aws eks list-clusters \
+              --region "${AWS_REGION}" \
+              --output json
+
       - name: Build and push image
         id: build
         env:
